@@ -1,10 +1,22 @@
 import React from 'react';
 import FeaturedVideo from '../components/FeaturedVideo/FeaturedVideo';
 import VideoCard from '../components/VideoCard/VideoCard';
+import MovieCard from '../components/MovieCard/MovieCard';
+
+const topPicks = [
+  { title: "Star Wars: Episode V", posterUrl: "https://example.com/star-wars.jpg", rating: 8.7 },
+  { title: "Spider-Man: Across the Spider-Verse", posterUrl: "https://example.com/spider-man.jpg", rating: 8.6 },
+  { title: "Interstellar", posterUrl: "https://example.com/interstellar.jpg", rating: 8.7 },
+  { title: "Arrival", posterUrl: "https://example.com/arrival.jpg", rating: 7.9 },
+  { title: "Inception", posterUrl: "https://example.com/inception.jpg", rating: 8.8 },
+  { title: "The Lord of the Rings", posterUrl: "https://example.com/lotr.jpg", rating: 8.8 },
+];
 
 const HomePage: React.FC = () => (
+  
   <main className="bg-gray-900">
-    <div className="flex space-x-8 container mx-auto p-4">
+    <div className=" container mx-auto p-4">
+      <div className="flex space-x-8">
       <div className="w-3/4">
         <FeaturedVideo
           title="'Inside Out 2' Make us Feel Every Emotion"
@@ -35,6 +47,13 @@ const HomePage: React.FC = () => (
           }
         ].map((video, index) => (
           <VideoCard key={index} {...video} />
+        ))}
+      </div>
+      </div>
+      <h2 className="text-2xl font-bold mt-8 mb-4 text-white">Top Picks</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {topPicks.map((movie, index) => (
+          <MovieCard key={index} {...movie} />
         ))}
       </div>
     </div>
