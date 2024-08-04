@@ -15,9 +15,12 @@ const MovieDetail: React.FC = () => {
   const { data: newMovie, isSuccess, isError, error } = useGetMovieDetail(id);
   const local = new LocalStorage()
   const {setMovie} = useMovie()
+  const [active, setActive] = useState<boolean>(false)
 
   const dataList = local.getItem<any>('bannerMovies');
+  const dataListOffline = local.getItem<any>('movie_detail');
   const storedMovie = dataList?.results?.find((itm: any) => itm?.id?.toString() === id?.toString());
+  const storedMovieOffline = dataListOffline?.some((itm: any) => itm?.id?.toString() === id?.toString());
 
   const movieData = navigator.onLine && isSuccess  && newMovie  || storedMovie
 
@@ -27,6 +30,7 @@ const MovieDetail: React.FC = () => {
 
   const handleMarkClick = (itm: any) => {
     console.log('Mark button clicked', itm);
+    setActive(true)
     setMovie(itm)
   };
 
@@ -42,6 +46,7 @@ const MovieDetail: React.FC = () => {
           reviewsCount={movieData?.revenue}
           markCount={movieData?.runtime}
           onRateClick={handleRateClick}
+          storedMovieOffline={storedMovieOffline || active}
           onMarkClick={() => handleMarkClick(newMovie || storedMovie)}
         />
         <div className="flex space-x-8">

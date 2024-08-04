@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useReducer, ReactNode, useEffect } from 'react';
-import { movieReducer, Movie } from './movieReducer';
+import { movieReducer } from './movieReducer';
 import { LocalStorage } from '../utils/localStorageUtils';
 
 interface MovieContextProps {
-  movie: Movie | null;
-  setMovie: (movie: Movie) => void;
+  movie: any;
+  setMovie: (movie: any) => void;
   clearMovie: () => void;
 }
 
@@ -14,7 +14,7 @@ export const MovieProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [movie, dispatch] = useReducer(movieReducer, null);
   const local = new LocalStorage();
 
-  const setMovie = (movie: Movie) => {
+  const setMovie = (movie: any) => {
     dispatch({ type: 'SET_MOVIE', payload: movie });
   };
 

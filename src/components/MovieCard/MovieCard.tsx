@@ -11,7 +11,7 @@ interface MovieCardProps {
 const MovieCard: React.FC<MovieCardProps> = ({ title, poster_path, rating, id }) => {
   return (
     <Link to={`/movie/${id}`} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-       <Link to={`/movie/${id}`}>
+      <Link to={`/movie/${id}`}>
         <img src={poster_path} alt={title} className="w-full h-64 object-cover" />
       </Link>
       <div className="p-4">
