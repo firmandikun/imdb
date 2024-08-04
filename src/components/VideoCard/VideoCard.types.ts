@@ -3,4 +3,5 @@ export interface VideoCardProps {
   subtitle: string;
   poster_path: string;
   duration: string;
+  id: string | any;
 }

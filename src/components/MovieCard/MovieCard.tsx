@@ -1,15 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface MovieCardProps {
   title: string;
-  posterUrl: string;
+  poster_path: string;
   rating: number;
+  id: number
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ title, posterUrl, rating }) => {
+const MovieCard: React.FC<MovieCardProps> = ({ title, poster_path, rating, id }) => {
   return (
-    <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-      <img src={posterUrl} alt={title} className="w-full h-64 object-cover" />
+    <Link to={`/movie/${id}`} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+       <Link to={`/movie/${id}`}>
+        <img src={poster_path} alt={title} className="w-full h-64 object-cover" />
+      </Link>
       <div className="p-4">
         <h3 className="text-white font-semibold text-lg mb-2">{title}</h3>
         <div className="flex items-center justify-between">
@@ -29,7 +33,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ title, posterUrl, rating }) => {
           Trailer
         </button>
       </div>
-    </div>
+    </Link>
   );
 };
 

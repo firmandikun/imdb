@@ -5,6 +5,7 @@ import HomePage from './views/Home';
 import Header from './components/Header/Header';
 import NotFound from './views/NotFound';
 import Footer from './components/Footer/Footer';
+import MovieDetail from './views/MovieDetail';
 
 const queryClient = new QueryClient(
   {
@@ -23,6 +24,7 @@ const App: React.FC = () => {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/movie/:id" element={<MovieDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer/>
