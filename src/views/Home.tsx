@@ -6,15 +6,6 @@ import useBannerMovies from '../hooks/useBannerMovies';
 import { LocalStorage } from '../utils/localStorageUtils';
 import { useMovie } from '../context/MovieContext';
 
-const topPicks = [
-  { title: "Star Wars: Episode V", id: 1, posterUrl: "https://images.unsplash.com/photo-1611787640592-ebf78080d96e?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", rating: 8.7 },
-  { title: "Spider-Man: Across the Spider-Verse", id: 1, posterUrl: "https://plus.unsplash.com/premium_photo-1682125157065-cbc4eb0fe0bb?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", rating: 8.6 },
-  { title: "Interstellar", posterUrl: "https://example.com/interstellar.jpg", id: 1, rating: 8.7 },
-  { title: "Arrival", posterUrl: "https://example.com/arrival.jpg", rating: 7.9, id: 1, },
-  { title: "Inception", posterUrl: "https://example.com/inception.jpg", rating: 8.8, id: 1, },
-  { title: "The Lord of the Rings", posterUrl: "https://example.com/lotr.jpg", rating: 8.8, id: 1, },
-];
-
 const HomePage: React.FC = () => {
   const { data: newMovie, isSuccess, isError, error } = useBannerMovies();
   const localStorage = new LocalStorage();
@@ -45,7 +36,6 @@ const HomePage: React.FC = () => {
     duration: itm?.vote_count,
     id: itm?.id,
   })) || [];
-
 
   return (
     <main className="bg-gray-900">
