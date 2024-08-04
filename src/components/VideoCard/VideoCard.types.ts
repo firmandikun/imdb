@@ -1,6 +1,6 @@
 export interface VideoCardProps {
   title: string;
   subtitle: string;
-  image: string;
+  poster_path: string;
   duration: string;
 }
